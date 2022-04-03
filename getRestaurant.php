@@ -4,17 +4,17 @@ if (isset($_POST['field_submit'])) {
     // Refer to conn.php file and open a connection.
     require_once("conn.php");
     // Will get the value typed in the form text field and save into variable
-    $var_director = $_POST['field_director'];
-    // Save the query into variable called $query. Note that :ph_director is a place holder
-    $query = "SELECT * FROM Movie WHERE director = :ph_director";
+    $var_restaurant_name = $_POST['field_restaurant_name'];
+    // Save the query into variable called $query. Note that :ph_restaurant_name is a place holder
+    $query = "SELECT * FROM euro_restaurant WHERE restaurant_name = :ph_restaurant_name";
 
 try
     {
       // Create a prepared statement. Prepared statements are a way to eliminate SQL INJECTION.
       $prepared_stmt = $dbo->prepare($query);
-      //bind the value saved in the variable $var_director to the place holder :ph_director  
+      //bind the value saved in the variable $var_restaurant_name to the place holder :ph_restaurant_name
       // Use PDO::PARAM_STR to sanitize user string.
-      $prepared_stmt->bindValue(':ph_director', $var_director, PDO::PARAM_STR);
+      $prepared_stmt->bindValue(':ph_restaurant_name', $var_restaurant_name, PDO::PARAM_STR);
       $prepared_stmt->execute();
       // Fetch all the values based on query and save that to variable $result
       $result = $prepared_stmt->fetchAll();
@@ -38,21 +38,21 @@ try
     <div id="navbar">
       <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="getMovie.php">Search Movie</a></li>
-        <li><a href="insertMovie.php">Insert Movie</a></li>
-        <li><a href="deleteMovie.php">Delete Movie</a></li>
+        <li><a href="getRestaurant.php">Search Movie</a></li>
+        <li><a href="insertRestaurant.php">Insert Movie</a></li>
+        <li><a href="deleteRestaurant.php">Delete Movie</a></li>
       </ul>
     </div>
     
-    <h1> Search Movie by Director</h1>
+    <h1> Search Restaurant Info by Restaurant Name</h1>
     <!-- This is the start of the form. This form has one text field and one button.
       See the project.css file to note how form is stylized.-->
     <form method="post">
 
-      <label for="id_director">Director</label>
+      <label for="restaurant_link">Restaurant</label>
       <!-- The input type is a text field. Note the name and id. The name attribute
         is referred above on line 7. $var_director = $_POST['field_director']; id attribute is referred in label tag above on line 52-->
-      <input type="text" name="field_director" id = "id_director">
+      <input type="text" name="restaurant_name" id = "id_restaurant_name">
       <!-- The input type is a submit button. Note the name and value. The value attribute decides what will be dispalyed on Button. In this case the button shows Submit.
       The name attribute is referred  on line 3 and line 61. -->
       <input type="submit" name="field_submit" value="Submit">
@@ -70,10 +70,14 @@ try
                 <thead>
                    <!-- The top row is table head with four columns named -- ID, Title ... -->
                   <tr>
-                    <th>ID</th>
-                    <th>Title</th>
-                    <th>Year</th>
-                    <th>Director</th>
+                    <th>restaurant_name</th>
+                    <th>restaurant_link</th>
+                    <th>original_location</th>
+                    <th>address</th>
+                    <th>city</th>
+                    <th>province</th>
+                    <th>region</th>
+                    <th>country</th>
                   </tr>
                 </thead>
                  <!-- Create rest of the the body of the table -->
@@ -82,13 +86,22 @@ try
                   <?php foreach ($result as $row) { ?>
                 
                     <tr>
-                       <!-- Print (echo) the value of mID in first column of table -->
-                      <td><?php echo $row["mID"]; ?></td>
-                      <!-- Print (echo) the value of title in second column of table -->
-                      <td><?php echo $row["title"]; ?></td>
-                      <!-- Print (echo) the value of movieYear in third column of table and so on... -->
-                      <td><?php echo $row["movieYear"]; ?></td>
-                      <td><?php echo $row["director"]; ?></td>
+                       <!-- Print (echo) the value of restaurant_name in first column of table -->
+                      <td><?php echo $row["restaurant name"]; ?></td>
+                      <!-- Print (echo) the value of restaurant_link in second column of table -->
+                      <td><?php echo $row["restaurant link"]; ?></td>
+                      <!-- Print (echo) the value of original_location in third column of table -->
+                      <td><?php echo $row["location"]; ?></td>
+
+                      <td><?php echo $row["address"]; ?></td>
+
+                      <td><?php echo $row["city"]; ?></td>
+
+                      <td><?php echo $row["province"]; ?></td>
+
+                      <td><?php echo $row["region"]; ?></td>
+
+                       <td><?php echo $row["country"]; ?></td>
                     <!-- End first row. Note this will repeat for each row in the $result variable-->
                     </tr>
                   <?php } ?>
@@ -99,7 +112,7 @@ try
   
         <?php } else { ?>
           <!-- IF query execution resulted in error display the following message-->
-          <h3>Sorry, no results found for director <?php echo $_POST['field_director']; ?>. </h3>
+          <h3>Sorry, no results found for director <?php echo $_POST['field_restaurant_name']; ?>. </h3>
         <?php }
     } ?>
 

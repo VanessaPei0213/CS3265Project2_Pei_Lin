@@ -51,7 +51,7 @@ CREATE TABLE mega_table (
 );
 
 -- Load data into megatable
-LOAD DATA INFILE '/Users/stephanielin/Desktop/CS3265/project2/tripadvisor_european_restaurants.csv' INTO TABLE euro_restuarant.mega_table
+LOAD DATA INFILE '/Users/Downloads/tripadvisor_european_restaurants.csv' INTO TABLE euro_restuarant.mega_table
     CHARACTER SET latin1
     FIELDS Terminated BY ',' 
     OPTIONALLY ENCLOSED BY '"' 

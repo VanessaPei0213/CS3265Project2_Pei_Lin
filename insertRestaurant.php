@@ -52,8 +52,8 @@ if (isset($_POST['f_submit'])) {
     	<label for="id_mID">mID</label>
     	<input type="text" name="f_mID" id="id_mID"> 
 
-    	<label for="id_title">title</label>
-    	<input type="text" name="f_title" id="id_title">
+    	<label for="restaurant_name">title</label>
+    	<input type="text" name="restaurant_name" id="id_restaurant_name">
 
     	<label for="id_year">year</label>
     	<input type="text" name="f_year" id="id_year">
@@ -67,7 +67,7 @@ if (isset($_POST['f_submit'])) {
       if (isset($_POST['f_submit'])) {
         if ($result) { 
     ?>
-          Movie data was inserted successfully.
+          Restaurant data was inserted successfully.
     <?php 
         } else { 
     ?>
