@@ -4,7 +4,7 @@ if (isset($_POST['field_submit'])) {
     // It will refer to conn.php file and will open a connection.
     require_once("p2conn.php");
     // Will get the value typed in the form text field and save into variable
-    $var_title = $_POST['field_title'];
+    $var_restaurant_name = $_POST['field_restaurant_name'];
     // Save the query into variable called $query. NOte that :title is a place holder
     $query = "CALL deleteRestaurant(:title)";
     
@@ -41,28 +41,27 @@ if (isset($_POST['field_submit'])) {
     <div id="navbar">
       <!-- See the project.css file to note how ul (unordered list) is stylized.-->
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="getRestaurant.php">Search Movie</a></li>
-        <li><a href="insertRestaurant.php">Insert Movie</a></li>
-        <li><a href="deleteRestaurant.php">Delete Movie</a></li>
-        <li><a href="getByVegFriendly.php">Delete Restaurant</a></li>
-        <li><a href="getByRating5.php">Delete Restaurant</a></li>
-        <li><a href="getByGenInfo.php">Delete Restaurant</a></li>
+		        <li><a href="index.html">Home</a></li>
+		        <li><a href="getRestaurant.php">Search Restaurant</a></li>
+		        <li><a href="insertRestaurant.php">Insert Restaurant</a></li>
+		        <li><a href="deleteRestaurant.php">Delete Restaurant</a></li>
+				<li><a href="getByVegFriendly.php">Search By Vegetarian Friendly</a></li>
+				<li><a href="getByRating5.php">Search By Top Rating</a></li>
+				<li><a href="getByGenInfo.php">Search by General Info</a></li>
       </ul>
     </div>
     <!-- See the project.css file to note h1 (Heading 1) is stylized.-->
-    <h1> Delete a Movie </h1>
+    <h1> Delete a Restaurant </h1>
     <!-- This is the start of the form. This form has one text field and one button.
       See the project.css file to note how form is stylized.-->
     <form method="post">
 
-      <label for="restaurant_link">Restaurant</label>
-      <!-- The input type is a text field. Note the name and id. The name attribute
-        is referred above on line 7. $var_director = $_POST['field_director']; id attribute is referred in label tag above on line 52-->
+      <label for="id_restaurant_name">Restaurant Name</label>
+
       <input type="text" name="field_restaurant_name" id = "id_restaurant_name">
       <!-- The input type is a submit button. Note the name and value. The value attribute decides what will be dispalyed on Button. In this case the button shows Submit.
       The name attribute is referred  on line 3 and line 61. -->
-      <input type="submit" name="field_submit" value="Submit">
+      <input type="submit" name="field_submit" value="Delete Restaurant">
     </form>
 
     <?php

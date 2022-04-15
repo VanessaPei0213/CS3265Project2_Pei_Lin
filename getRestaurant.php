@@ -1,4 +1,7 @@
 <?php
+
+// to get the restaurant by calling the Mega Table
+// for project 2 part 2
 // If the all the variables are set when the Submit button is clicked...
 if (isset($_POST['field_submit'])) {
     // Refer to conn.php file and open a connection.

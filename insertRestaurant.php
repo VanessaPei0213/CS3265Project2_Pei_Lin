@@ -48,8 +48,7 @@ if (isset($_POST['field_submit'])) {
 
 
 
-//double check
-    $query = "INSERT INTO Movie (restaurant_link, restaurant_name, original_location, country, region, province,
+    $query = "INSERT INTO mega_table (restaurant_link, restaurant_name, original_location, country, region, province,
     city, address, latitude, longitude, claimed, awards, popularity_detailed, popularity_generic,
     top_tags, price_level, price_range, meals, cuisines, special_diets, features, vegetarian_friendly,
     vegan_options, gluten_free, original_open_hours, open_days_per_week, open_hours_per_week, working_shifts_per_week,
@@ -130,29 +129,70 @@ if (isset($_POST['field_submit'])) {
   <body>
     <div id="navbar">
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="getRestaurant.php">Search Movie</a></li>
-        <li><a href="insertRestaurant.php">Insert Movie</a></li>
-        <li><a href="deleteRestaurant.php">Delete Movie</a></li>
-        <li><a href="getByVegFriendly.php">Delete Restaurant</a></li>
-        <li><a href="getByRating5.php">Delete Restaurant</a></li>
-        <li><a href="getByGenInfo.php">Delete Restaurant</a></li>
+		        <li><a href="index.html">Home</a></li>
+		        <li><a href="getRestaurant.php">Search Restaurant</a></li>
+		        <li><a href="insertRestaurant.php">Insert Restaurant</a></li>
+		        <li><a href="deleteRestaurant.php">Delete Restaurant</a></li>
+				<li><a href="getByVegFriendly.php">Search By Vegetarian Friendly</a></li>
+				<li><a href="getByRating5.php">Search By Top Rating</a></li>
+				<li><a href="getByGenInfo.php">Search by General Info</a></li>
       </ul>
     </div>
 
-<h1> Insert Movie </h1>
+<h1> Insert Restaurant </h1>
 
     <form method="post">
-    	<label for="restaurant_link">Restaurant</label>
-    	<input type="text" name="f_mID" id="id_mID"> 
+    	<label for="id_restaurant_link">Restaurant Link</label>
+    	<input type="text" name="field_restaurant_link" id="id_restaurant_link">
 
-    	<label for="restaurant_name">title</label>
-    	<input type="text" name="restaurant_name" id="id_restaurant_name">
+    	<label for="id_restaurant_name">title</label>
+    	<input type="text" name="field_original_location" id="id_original_location">
 
-      <input type="submit" name="field_submit" value="Submit">
+    	<label for="id_country">mID</label>
+    	<input type="text" name="field_country" id="id_country">
+
+    	<label for="id_region">title</label>
+    	<input type="text" name="field_region" id="id_region">
+
+    	<label for="id_province">year</label>
+    	<input type="text" name="field_province" id="id_province">
+
+    	<label for="id_city">director</label>
+    	<input type="text" name="field_city" id="id_city">
+
+    	<label for="id_address">mID</label>
+    	<input type="text" name="field_address" id="id_address">
+
+    	<label for="id_latitude">title</label>
+    	<input type="text" name="field_latitude" id="id_latitude">
+
+    	<label for="id_longitude">year</label>
+    	<input type="text" name="field_longitude" id="id_longitude">
+
+
+    	<label for="id_claimed">director</label>
+    	<input type="text" name="field_claimed" id="id_claimed">
+
+    	<label for="id_awards">director</label>
+    	<input type="text" name="field_awards" id="id_awards">
+
+    	<label for="id_popularity_detailed">mID</label>
+    	<input type="text" name="field_popularity_detailed" id="id_popularity_detailed">
+
+    	<label for="id_popularity_generic">title</label>
+    	<input type="text" name="field_popularity_generic" id="id_popularity_generic">
+
+    	<label for="id_top_tags">year</label>
+    	<input type="text" name="field_top_tags" id="id_top_tags">
+
+    	<label for="id_price_level">director</label>
+    	<input type="text" name="field_price_level" id="id_price_level">
+
+    	<input type="submit" name="field_submit" value="Submit">
+
     </form>
     <?php
-      if (isset($_POST['f_submit'])) {
+      if (isset($_POST['field_submit'])) {
         if ($result) { 
     ?>
           Restaurant data was inserted successfully.

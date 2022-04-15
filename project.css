@@ -1,13 +1,14 @@
 body {
     padding-left: 100px;
     color: forestgreen;
-    background-color: lightblue
+    background-color: lightblue;
 }
 
 div#navbar {
- height: 40px;
- width: 1000px;
+ height: 100px;
+ width: 2000px;
  background-repeat:repeat-x;
+    background-color: red;
 }
 
 div#navbar ul {

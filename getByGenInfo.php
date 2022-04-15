@@ -6,9 +6,9 @@ if (isset($_POST['submit'])) {
 
     require_once("p2conn.php");
 
-    $res_veg_friendly = $_POST['res_name'];
+    $res_name = $_POST['res_name'];
 
-    $query = "CALL search_geninfo(:res_name)"; //todo: change this later
+    $query = "CALL search_geninfo(:res_name)";
 
  try
     {
@@ -27,7 +27,7 @@ if (isset($_POST['submit'])) {
 
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="project.css" />
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"/>
 
   </head>
@@ -39,21 +39,21 @@ if (isset($_POST['submit'])) {
 		        <li><a href="getRestaurant.php">Search Restaurant</a></li>
 		        <li><a href="insertRestaurant.php">Insert Restaurant</a></li>
 		        <li><a href="deleteRestaurant.php">Delete Restaurant</a></li>
-				<li><a href="getByVegFriendly.php">Delete Restaurant</a></li>
-				<li><a href="getByRating5.php">Delete Restaurant</a></li>
-				<li><a href="getByGenInfo.php">Delete Restaurant</a></li>
+				<li><a href="getByVegFriendly.php">Search By Vegetarian Friendly</a></li>
+				<li><a href="getByRating5.php">Search By Top Rating</a></li>
+				<li><a href="getByGenInfo.php">Search by General Info</a></li>
       </ul>
     </div>
 
-    <h1> Search Restaurants that are both vegetarian friendly and provide vegan options</h1>
+    <h1> Search Restaurants by General Info</h1>
 
     <form method="post">
 
-      <label for="res_veg_friendly">specialty</label>
-      <input type="text" name="res_veg_friendly">
+      <label for="res_name">restaurant name</label>
+      <input type="text" name="res_name">
 
       <input type="submit" name="submit" value="Search">
-      <r> Enter a specialty. </r>
+      <r> Enter a restaurant name. </r>
     </form>
     <?php
       if (isset($_POST['submit'])) {
@@ -103,7 +103,7 @@ if (isset($_POST['submit'])) {
     } ?>
 
 
-    <img id='i2' src= "img2.png" />
+    <img id='i2' src= "restaurantNuevo" />
   </body>
 </html>
 
