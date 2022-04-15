@@ -13,7 +13,7 @@ if (isset($_POST['submit'])) {
  try
     {
       $prepared_stmt = $dbo->prepare($query);
-      $prepared_stmt->bindValue(':res_name', $res_veg_friendly, PDO::PARAM_STR);
+      $prepared_stmt->bindValue(':res_name', $res_name, PDO::PARAM_STR);
       $prepared_stmt->execute();
       $result = $prepared_stmt->fetchAll();
 
@@ -64,12 +64,12 @@ if (isset($_POST['submit'])) {
               <table id="specTable">
                 <thead>
                   <tr>
-                    <th>restaurant_name</th>
+                    <th>restaurant name</th>
                     <th>address</th>
-                    <th>original_open_hours</th>
-                    <th>price_level</th>
-                    <th>avg_rating</th>
-                    <th>top_tags</th>
+                    <th>original open hours</th>
+                    <th>price level</th>
+                    <th>avg rating</th>
+                    <th>top tags</th>
 
                   </tr>
                 </thead>
@@ -78,12 +78,12 @@ if (isset($_POST['submit'])) {
                   <?php foreach ($result as $row) { ?>
 
                     <tr>
-                      <td><?php echo $row["restaurant name"]; ?></td>
+                      <td><?php echo $row["restaurant_name"]; ?></td>
                       <td><?php echo $row["address"]; ?></td>
-                      <td><?php echo $row["original open hours"]; ?></td>
-                      <td><?php echo $row["price level"]; ?></td>
-                      <td><?php echo $row["average rating"]; ?></td>
-                      <td><?php echo $row["top tags"]; ?></td>
+                      <td><?php echo $row["original_open_hours"]; ?></td>
+                      <td><?php echo $row["price_level"]; ?></td>
+                      <td><?php echo $row["avg_rating"]; ?></td>
+                      <td><?php echo $row["top_tags"]; ?></td>
 
                     </tr>
                   <?php } ?>
@@ -103,7 +103,7 @@ if (isset($_POST['submit'])) {
     } ?>
 
 
-    <img id='i2' src= "restaurantNuevo" />
+    <img id='i2' src= "restaurantNuevo.jpeg" />
   </body>
 </html>
 

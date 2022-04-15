@@ -2,18 +2,18 @@
 <?php
 
 //Allow users to search restaurants that have rating of 5 by country
-if (isset($_POST['submit'])) {
+if (isset($_POST['field_submit'])) {
 
     require_once("p2conn.php");
 
-    $res_veg_friendly = $_POST['country_name'];
+    $var_country_name = $_POST['field_country_name'];
 
     $query = "CALL search_res_rating_5(:country_name)";
 
  try
     {
       $prepared_stmt = $dbo->prepare($query);
-      $prepared_stmt->bindValue(':country_name', $country_name, PDO::PARAM_STR);
+      $prepared_stmt->bindValue(':country_name', $var_country_name, PDO::PARAM_STR);
       $prepared_stmt->execute();
       $result = $prepared_stmt->fetchAll();
 
@@ -28,7 +28,6 @@ if (isset($_POST['submit'])) {
 <html>
   <head>
     <link rel="stylesheet" type="text/css" href="project.css" />
-    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"/>
 
   </head>
 
@@ -49,25 +48,25 @@ if (isset($_POST['submit'])) {
 
     <form method="post">
 
-      <label for="country_name">country</label>
-      <input type="text" name="country_name">
+      <label for="id_country_name">Country Name</label>
+      <input type="text" name="field_country_name" id ="id_country_name">
 
-      <input type="submit" name="submit" value="Search">
+      <input type="submit" name="field_submit" value="Search">
       <r> Enter a country name. </r>
     </form>
     <?php
-      if (isset($_POST['submit'])) {
+      if (isset($_POST['field_submit'])) {
         if ($result && $prepared_stmt->rowCount() > 0) { ?>
 
               <h2>Results</h2>
 
-              <table id="specTable">
+              <table>
                 <thead>
                   <tr>
-                    <th>restaurant_name</th>
+                    <th>restaurant name</th>
                     <th>address</th>
-                    <th>popularity_detailed</th>
-                    <th>popularity_generic</th>
+                    <th>popularity detailed</th>
+                    <th>popularity generic</th>
 
                   </tr>
                 </thead>
@@ -76,10 +75,10 @@ if (isset($_POST['submit'])) {
                   <?php foreach ($result as $row) { ?>
 
                     <tr>
-                      <td><?php echo $row["restaurant name"]; ?></td>
-                      <td><?php echo $row["popularity detailed"]; ?></td>
+                      <td><?php echo $row["restaurant_name"]; ?></td>
+                      <td><?php echo $row["popularity_detailed"]; ?></td>
                       <td><?php echo $row["address"]; ?></td>
-                      <td><?php echo $row["popularity generic"]; ?></td>
+                      <td><?php echo $row["popularity_generic"]; ?></td>
 
                     </tr>
                   <?php } ?>
@@ -94,7 +93,7 @@ if (isset($_POST['submit'])) {
             </script>
 
         <?php } else { ?>
-          Sorry No results found for <?php echo $_POST['res_avg_rating_5']; ?>.
+          Sorry No results found for <?php echo $_POST['field_country_name']; ?>.
         <?php }
     } ?>
 

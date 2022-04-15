@@ -2,18 +2,18 @@
 <?php
 
 //Allow users to search vegetarian friendly restaurants that have vegan options by country
-if (isset($_POST['submit'])) {
+if (isset($_POST['field_submit'])) {
 
     require_once("p2conn.php");
 
-    $res_veg_friendly = $_POST['country'];
+    $var_country_name= $_POST['field_country_name'];
 
-    $query = "CALL search_res_by_country(:country)"; //todo: change this later
+    $query = "CALL search_res_by_country(:country_name)"; //call the procedure
 
  try
     {
       $prepared_stmt = $dbo->prepare($query);
-      $prepared_stmt->bindValue(':country', $country, PDO::PARAM_STR);
+      $prepared_stmt->bindValue(':country_name', $var_country_name, PDO::PARAM_STR);
       $prepared_stmt->execute();
       $result = $prepared_stmt->fetchAll();
 
@@ -28,7 +28,6 @@ if (isset($_POST['submit'])) {
 <html>
   <head>
     <link rel="stylesheet" type="text/css" href="project.css" />
-    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"/>
 
   </head>
 
@@ -47,29 +46,29 @@ if (isset($_POST['submit'])) {
 
     <h1> Search Restaurants that are both vegetarian friendly and provide vegan options</h1>
 
-    <form method="post">
+<form method="post">
 
-      <label for="country">Country</label>
-      <input type="text" name="country">
+      <label for="id_country_name">Country Name</label>
+      <input type="text" name="field_country_name" id ="id_country_name">
 
-      <input type="submit" name="submit" value="Search">
+      <input type="submit" name="field_submit" value="Search">
       <r> Enter a Country Name. </r>
     </form>
     <?php
-      if (isset($_POST['submit'])) {
+      if (isset($_POST['field_submit'])) {
         if ($result && $prepared_stmt->rowCount() > 0) { ?>
 
               <h2>Results</h2>
 
-              <table id="specTable">
+              <table>
                 <thead>
                   <tr>
-                    <th>restaurant_name</th>
-                    <th>country</th>
-                    <th>address</th>
-                    <th>original_open_hours</th>
-                    <th>features</th>
-                    <th>keywords</th>
+                    <th>Restaurant Name</th>
+                    <th>Country</th>
+                    <th>Address</th>
+                    <th>Original Open Hours</th>
+                    <th>Features</th>
+                    <th>Keywords</th>
 
                   </tr>
                 </thead>
@@ -78,10 +77,10 @@ if (isset($_POST['submit'])) {
                   <?php foreach ($result as $row) { ?>
 
                     <tr>
-                      <td><?php echo $row["restaurant name"]; ?></td>
+                      <td><?php echo $row["restaurant_name"]; ?></td>
                       <td><?php echo $row["country"]; ?></td>
                       <td><?php echo $row["address"]; ?></td>
-                      <td><?php echo $row["original open hours"]; ?></td>
+                      <td><?php echo $row["original_open_hours"]; ?></td>
                       <td><?php echo $row["features"]; ?></td>
                       <td><?php echo $row["keywords"]; ?></td>
 
@@ -98,7 +97,7 @@ if (isset($_POST['submit'])) {
             </script>
 
         <?php } else { ?>
-          Sorry No results found for <?php echo $_POST['country']; ?>.
+          Sorry No results found for <?php echo $_POST['field_country_name']; ?>.
         <?php }
     } ?>
 
