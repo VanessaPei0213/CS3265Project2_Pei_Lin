@@ -41,6 +41,9 @@ try
         <li><a href="getRestaurant.php">Search Movie</a></li>
         <li><a href="insertRestaurant.php">Insert Movie</a></li>
         <li><a href="deleteRestaurant.php">Delete Movie</a></li>
+        <li><a href="getByVegFriendly.php">Delete Restaurant</a></li>
+        <li><a href="getByRating5.php">Delete Restaurant</a></li>
+        <li><a href="getByGenInfo.php">Delete Restaurant</a></li>
       </ul>
     </div>
     
