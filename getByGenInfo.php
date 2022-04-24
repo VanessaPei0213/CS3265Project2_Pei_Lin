@@ -109,7 +109,7 @@ if (isset($_POST['field_submit'])) {
             </script>
 
         <?php } else { ?>
-          Sorry No results found for <?php echo $_POST['res_name']; ?>.
+          Sorry, no results found for this restaurant.
         <?php }
     } ?>
 
