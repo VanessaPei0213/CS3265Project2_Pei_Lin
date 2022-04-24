@@ -47,7 +47,7 @@ if (isset($_POST['field_submit'])) {
       </ul>
     </div>
 
-    <h1> During COVID, many restaurant owners have to shut down their stores...  </h1>
+    <h1> During COVID-19, many restaurant owners have to shut down their stores...  </h1>
     <h3>     We're so sorry about this, and this page is to help you delete the info of your restaurant. </h3>
     <!-- This is the start of the form. This form has one text field and one button.
       See the project.css file to note how form is stylized.-->

@@ -105,7 +105,7 @@ if (isset($_POST['field_submit'])) {
     } ?>
 
 
-    <img id='i2' src= "BarPic.jpeg" />
+    <img id='i2' src= "insert_rate_pic.jpg" />
 
     		<l2> Locally sourced / Crafted with Love.</l2>
 

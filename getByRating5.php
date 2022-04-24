@@ -53,7 +53,7 @@ if (isset($_POST['field_submit'])) {
       <input type="text" name="field_country_name" id ="id_country_name">
 
       <label for="id_city_name">City Name</label>
-      <input type="text" name="field_country_name" id ="id_city_name">
+      <input type="text" name="field_city_name" id ="id_city_name">
 
       <input type="submit" name="field_submit" value="Search">
 
