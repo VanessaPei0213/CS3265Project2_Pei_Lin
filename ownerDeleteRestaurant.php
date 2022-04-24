@@ -74,7 +74,7 @@ if (isset($_POST['field_submit'])) {
       }
     ?>
 
-         <img id='i2' src= "restaurant_interior.png" />
+         <img id='i2' src= "restaurant_interior.jpeg" />
 
          <l2> Locally sourced / Crafted with Love.</l2>
 

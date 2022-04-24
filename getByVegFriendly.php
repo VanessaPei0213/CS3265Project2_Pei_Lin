@@ -49,7 +49,7 @@ if (isset($_POST['field_submit'])) {
       </ul>
     </div>
 
-    <h1> Search Restaurants that are both vegetarian friendly and provide vegan options</h1>
+    <h1> Vegetarians can also enjoy the food in European cities! </h1>
 
 <form method="post">
 
@@ -112,6 +112,13 @@ if (isset($_POST['field_submit'])) {
 
 
     <img id='i2' src= "ItalianResPic.jpeg" />
+
+
+    		<l2> Locally sourced / Crafted with Love.</l2>
+
+    		<footer>
+    			<quote>Image credit: commons.wikimedia.org </quote>
+    		</footer>
   </body>
 </html>
 

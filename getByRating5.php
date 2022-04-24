@@ -7,13 +7,15 @@ if (isset($_POST['field_submit'])) {
     require_once("p2conn.php");
 
     $var_country_name = $_POST['field_country_name'];
+    $var_city_name = $_POST['field_city_name'];
 
-    $query = "CALL search_res_rating_5(:country_name)";
+    $query = "CALL search_res_rating_5(:country_name, :city_name)";
 
  try
     {
       $prepared_stmt = $dbo->prepare($query);
       $prepared_stmt->bindValue(':country_name', $var_country_name, PDO::PARAM_STR);
+      $prepared_stmt->bindValue(':city_name', $var_city_name, PDO::PARAM_STR);
       $prepared_stmt->execute();
       $result = $prepared_stmt->fetchAll();
 
@@ -35,12 +37,11 @@ if (isset($_POST['field_submit'])) {
     <div id="navbar">
       <ul>
 		        <li><a href="index.html">Home</a></li>
-		        <li><a href="getRestaurant.php">Search Restaurant</a></li>
-		        <li><a href="insertRestaurant.php">Insert Restaurant</a></li>
-		        <li><a href="deleteRestaurant.php">Delete Restaurant</a></li>
-				<li><a href="getByVegFriendly.php">Search By Vegetarian Friendly</a></li>
-				<li><a href="getByRating5.php">Search By Top Rating</a></li>
-				<li><a href="getByGenInfo.php">Search by General Info</a></li>
+				<li><a href="getByGenInfo.php">Search Restaurants</a></li>
+		        <li><a href="insertRestaurantRate.php">Rate your Favourite Restaurants</a></li>
+				<li><a href="getByVegFriendly.php">Are you a Vegetarian?</a></li>
+				<li><a href="getByRating5.php">Top Rating Restaurants</a></li>
+				<li><a href="ownerDeleteRestaurant.php">Delete your Restaurant Info - Owners Only</a></li>
       </ul>
     </div>
 
@@ -51,8 +52,11 @@ if (isset($_POST['field_submit'])) {
       <label for="id_country_name">Country Name</label>
       <input type="text" name="field_country_name" id ="id_country_name">
 
+      <label for="id_city_name">City Name</label>
+      <input type="text" name="field_country_name" id ="id_city_name">
+
       <input type="submit" name="field_submit" value="Search">
-      <r> Enter a country name. </r>
+
     </form>
     <?php
       if (isset($_POST['field_submit'])) {
@@ -63,10 +67,11 @@ if (isset($_POST['field_submit'])) {
               <table>
                 <thead>
                   <tr>
-                    <th>restaurant name</th>
-                    <th>address</th>
-                    <th>popularity detailed</th>
-                    <th>popularity generic</th>
+                    <th>Restaurant Name</th>
+                    <th>Address</th>
+                    <th>Total Reviews Count</th>
+                    <th>Detailed Popularity </th>
+                    <th>Generic Popularity </th>
 
                   </tr>
                 </thead>
@@ -76,8 +81,9 @@ if (isset($_POST['field_submit'])) {
 
                     <tr>
                       <td><?php echo $row["restaurant_name"]; ?></td>
-                      <td><?php echo $row["popularity_detailed"]; ?></td>
                       <td><?php echo $row["address"]; ?></td>
+                      <td><?php echo $row["total_reviews_count"]; ?></td>
+                      <td><?php echo $row["popularity_detailed"]; ?></td>
                       <td><?php echo $row["popularity_generic"]; ?></td>
 
                     </tr>
@@ -99,6 +105,13 @@ if (isset($_POST['field_submit'])) {
 
 
     <img id='i2' src= "BarPic.jpeg" />
+
+    		<l2> Locally sourced / Crafted with Love.</l2>
+
+    		<footer>
+    			<quote>Image credit: commons.wikimedia.org </quote>
+    		</footer>
+
   </body>
 </html>
 

@@ -1,19 +1,23 @@
 
 <?php
 
-//Allow users to search restaurants' general information
+//Allow users to search restaurants that have rating of 5 by country
 if (isset($_POST['field_submit'])) {
 
     require_once("p2conn.php");
 
-    $var_res_name = $_POST['field_res_name'];
+    $var_restau_name = $_POST['field_restau_name'];
+    $var_in_city = $_POST['field_in_city'];
+    $var_rating = $_POST['field_rating'];
 
-    $query = "CALL search_geninfo(:res_name)"; //call the procedure
+    $query = "CALL cust_rate(:restau_name, :in_city, :rating)";
 
  try
     {
       $prepared_stmt = $dbo->prepare($query);
-      $prepared_stmt->bindValue(':res_name', $var_res_name, PDO::PARAM_STR);
+      $prepared_stmt->bindValue(':restau_name', $var_restau_name, PDO::PARAM_STR);
+      $prepared_stmt->bindValue(':in_city', $var_in_city, PDO::PARAM_STR);
+      $prepared_stmt->bindValue(':rating', $var_rating, PDO::PARAM_STR);
       $prepared_stmt->execute();
       $result = $prepared_stmt->fetchAll();
 
@@ -28,7 +32,6 @@ if (isset($_POST['field_submit'])) {
 <html>
   <head>
     <link rel="stylesheet" type="text/css" href="project.css" />
-    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"/>
 
   </head>
 
@@ -44,38 +47,35 @@ if (isset($_POST['field_submit'])) {
       </ul>
     </div>
 
-    <h1> Hi, friends! Hope you are having a wonderful trip so far. Search the restaurants in Europe here.</h1>
+    <h1> Get the top 100 popular restaurants with a rating of 5 in different European cities.</h1>
 
     <form method="post">
 
-      <label for="res_name">Restaurant Name</label>
-      <input type="text" name="field_res_name" id ="id_res_name">
+      <label for="id_restau_name">Restaurant Name</label>
+      <input type="text" name="field_restau_name" id ="id_restau_name">
 
-      <input type="submit" name="field_submit" value="Search" >
-      <r> Enter a restaurant name. </r>
+      <label for="id_in_city">City Name</label>
+      <input type="text" name="field_in_city" id ="id_in_city">
+
+      <label for="id_rating">Rate it Here! (1-5) </label>
+      <input type="text" name="field_rating" id ="id_rating">
+
+      <input type="submit" name="field_submit" value="Enter">
 
     </form>
     <?php
       if (isset($_POST['field_submit'])) {
         if ($result && $prepared_stmt->rowCount() > 0) { ?>
 
-              <h2>Results</h2>
+              <h2>Updated Ratings:</h2>
 
               <table>
                 <thead>
                   <tr>
                     <th>Restaurant Name</th>
-                    <th>Address</th>
-                    <th>Price Level</th>
-                    <th>Average rating</th>
-                    <th>Open Days per Week</th>
-                    <th>Open Hours on Monday</th>
-                    <th>Open Hours on Tuesday</th>
-                    <th>Open Hours on Wednesday</th>
-                    <th>Open Hours on Thursday</th>
-                    <th>Open Hours on Friday</th>
-                    <th>Open Hours on Saturday</th>
-                    <th>Open Hours on Sunday</th>
+                    <th>Average Rating</th>
+                    <th>Total Reviews Count</th>
+
                   </tr>
                 </thead>
                 <tbody>
@@ -84,17 +84,8 @@ if (isset($_POST['field_submit'])) {
 
                     <tr>
                       <td><?php echo $row["restaurant_name"]; ?></td>
-                      <td><?php echo $row["address"]; ?></td>
-                      <td><?php echo $row["price_level"]; ?></td>
                       <td><?php echo $row["avg_rating"]; ?></td>
-                      <td><?php echo $row["open_days_per_week"]; ?></td>
-                      <td><?php echo $row["original_open_hours_Mon"]; ?></td>
-                      <td><?php echo $row["original_open_hours_Tue"]; ?></td>
-                      <td><?php echo $row["original_open_hours_Wed"]; ?></td>
-                      <td><?php echo $row["original_open_hours_Thu"]; ?></td>
-                      <td><?php echo $row["original_open_hours_Fri"]; ?></td>
-                      <td><?php echo $row["original_open_hours_Sat"]; ?></td>
-                      <td><?php echo $row["original_open_hours_Sun"]; ?></td>
+                      <td><?php echo $row["total_reviews_count"]; ?></td>
 
                     </tr>
                   <?php } ?>
@@ -109,12 +100,12 @@ if (isset($_POST['field_submit'])) {
             </script>
 
         <?php } else { ?>
-          Sorry No results found for <?php echo $_POST['res_name']; ?>.
+          Sorry, no restaurants found for <?php echo $_POST['field_restau_name']; ?>.
         <?php }
     } ?>
 
 
-    <img id='i2' src= "restaurantNuevo.jpeg" />
+    <img id='i2' src= "BarPic.jpeg" />
 
     		<l2> Locally sourced / Crafted with Love.</l2>
 
