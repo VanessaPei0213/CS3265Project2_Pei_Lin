@@ -44,7 +44,7 @@ if (isset($_POST['field_submit'])) {
       </ul>
     </div>
 
-    <h1> Search Restaurants that have rating of 5</h1>
+    <h1> Get the top 100 popular restaurants with a rating of 5 in different European cities.</h1>
 
     <form method="post">
 
