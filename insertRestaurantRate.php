@@ -47,7 +47,7 @@ if (isset($_POST['field_submit'])) {
       </ul>
     </div>
 
-    <h1> Get the top 100 popular restaurants with a rating of 5 in different European cities.</h1>
+    <h1> We'd love to hear your voice!</h1>
 
     <form method="post">
 
