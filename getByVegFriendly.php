@@ -106,7 +106,7 @@ if (isset($_POST['field_submit'])) {
             </script>
 
         <?php } else { ?>
-          Sorry, no results found for <?php echo $_POST['field_city_name']; ?> (city) in <?php echo $_POST['field_country_name']; ?> (country). Make sure that the first letter you used is uppercase.
+          Sorry, no results found for <?php echo $_POST['field_city_name']; ?> (city) in <?php echo $_POST['field_country_name']; ?> (country). Make sure that the first letter you use is uppercase.
         <?php }
     } ?>
 
