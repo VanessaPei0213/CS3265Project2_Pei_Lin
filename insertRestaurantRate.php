@@ -102,7 +102,7 @@ if (isset($_POST['field_submit'])) {
             </script>
 
         <?php } else { ?>
-          Sorry, no restaurants found for <?php echo $_POST['field_restau_name']; ?> in <?php echo $_POST['field_in_city']; ?> (city). Make sure that the first letter you use in the city name is uppercase.
+          Sorry, no restaurants found for <?php echo $_POST['field_restau_name']; ?> in <?php echo $_POST['field_in_city']; ?> (city).
         <?php }
     } ?>
 
