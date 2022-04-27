@@ -7,11 +7,10 @@ CS 3265 Project 2 is a website that allows users to search for the restaurants i
 This directory provides all the source codes for our website. 
 
 Environment set-up instruction: 
-Step 1: Go to MAMP directory, and move all of the files to the htdocs folder. Start the MAMP server and MySQL workbench. To establish the connection to the data file, check your username, password, network address and port from MySQL workbench home page. 
+Step 1: Go to MAMP directory, and move all of the files to the htdocs folder. Start the MAMP server and MySQL workbench. To establish the connection to the data file, please check your username, password, network address and port from MySQL workbench home page. 
 Step 2: Open the p2conn.php file and change the variable "$dbhost  = '127.0.0.1';" and "$dbhost . ';port=8889;" according to the parameters on your local machine. 
 Step 3: Click "Open WebStart Page from MAMP and note the URL. 
         e.g. my URL is localhost/MAMP/?language=English. Use the first part of the URL (before the first ‘/’), and add CS3265Project2_Pei_Lin/index.html to this link. 
-For example, I will enter
 
 make  http://localhost:8888/CS3265Project2_Pei_Lin/index.html in the address bar. This should take you to the home page of the application.
 
@@ -28,3 +27,4 @@ ownerDeleteRestaurant.php: webpage, it allows the restaurant owners to delete th
 To extract the correct data from our database, please follow this instruction:
 Step 1: Open EuroRestaurantDB.sql. 
 Step 2: Navigate to the query of LOAD DATA INFILE '/Users/peiyuxin/Downloads/tripadvisor_european_restaurants.csv' INTO TABLE euro_restuarant.mega_table, change the path to the path of the csv file on your device (the csv file is included in this "CS3265Project2_Pei_Lin" folder).
+Step 3: Run every line of codes in EuroRestaurantDB.sql

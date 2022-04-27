@@ -75,7 +75,7 @@ if (isset($_POST['field_submit'])) {
     <?php
       if (isset($_POST['field_submit'])) {
         if ($result && $prepared_stmt->rowCount() > 0) { ?>
-          <h3>Restaurant was inserted succesfully</h3>
+          <h3>Restaurant was inserted successfully.</h3>
     <?php 
         } else { 
     ?>

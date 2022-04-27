@@ -39,6 +39,7 @@ if (isset($_POST['field_submit'])) {
     <div id="navbar">
       <ul>
  <li><a href="index.html">Home</a></li>
+        <li><a href="index.html">Home</a></li>
         <li><a href="getByGenInfo.php">Search Restaurants</a></li>
         <li><a href="insertRestaurantRate.php">Rate your Favourite Restaurants</a></li>
         <li><a href="getByVegFriendly.php">Are you a Vegetarian?</a></li>
