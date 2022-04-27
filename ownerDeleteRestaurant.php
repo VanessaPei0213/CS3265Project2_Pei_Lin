@@ -38,12 +38,13 @@ if (isset($_POST['field_submit'])) {
     <div id="navbar">
       <!-- See the project.css file to note how ul (unordered list) is stylized.-->
       <ul>
-		        <li><a href="index.html">Home</a></li>
-				<li><a href="getByGenInfo.php">Search Restaurants</a></li>
-		        <li><a href="insertRestaurantRate.php">Rate your Favourite Restaurants</a></li>
-				<li><a href="getByVegFriendly.php">Are you a Vegetarian?</a></li>
-				<li><a href="getByRating5.php">Top Rating Restaurants</a></li>
-				<li><a href="ownerDeleteRestaurant.php">Delete your Restaurant Info - Owners Only</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="getByGenInfo.php">Search Restaurants</a></li>
+        <li><a href="insertRestaurantRate.php">Rate your Favourite Restaurants</a></li>
+        <li><a href="getByVegFriendly.php">Are you a Vegetarian?</a></li>
+        <li><a href="getByRating5.php">Top Rating Restaurants</a></li>
+        <li><a href="insertRestaurant.php">Insert Your New Restaurant</a></li>
+        <li><a href="ownerDeleteRestaurant.php">Delete Your Restaurant Info</a></li>
       </ul>
     </div>
 
